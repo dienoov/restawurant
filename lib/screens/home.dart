@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:restawurant/models/restaurant.dart';
 import 'package:restawurant/providers/restaurants.dart';
 import 'package:restawurant/providers/state.dart';
 import 'package:restawurant/widgets/header.dart';
+import 'package:restawurant/widgets/loading.dart';
 import 'package:restawurant/widgets/restaurant_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -35,14 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Consumer<RestaurantsProvider>(
               builder: (context, value, child) {
                 return switch (value.state) {
-                  LoadingState() => Center(
-                    child: Lottie.asset(
-                      Theme.of(context).brightness == Brightness.dark
-                          ? 'assets/loading.dark.json'
-                          : 'assets/loading.light.json',
-                      width: 160,
-                    ),
-                  ),
+                  LoadingState() => Loading(),
                   ErrorState(error: String message) => Center(
                     child: Container(
                       padding: const EdgeInsets.all(16.0),
