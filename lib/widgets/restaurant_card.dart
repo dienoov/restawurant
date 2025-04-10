@@ -10,7 +10,9 @@ class RestaurantCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, '/restaurant', arguments: restaurant.id);
+      },
       child: Card(
         margin: const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
         shape: RoundedRectangleBorder(
@@ -22,26 +24,32 @@ class RestaurantCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ConstrainedBox(
-                constraints: const BoxConstraints(
-                  minHeight: 240,
-                  maxHeight: 240,
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(24.0),
-                  child: Image.network(
-                    'https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}',
-                    fit: BoxFit.cover,
-                    width: double.infinity,
+              Hero(
+                tag: restaurant.id,
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    minHeight: 240,
+                    maxHeight: 240,
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(24.0),
+                    child: Image.network(
+                      'https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}',
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                    ),
                   ),
                 ),
               ),
               const SizedBox.square(dimension: 12),
-              Text(
-                restaurant.name,
-                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                  fontWeight: FontWeight.w900,
-                  fontSize: 24,
+              Hero(
+                tag: restaurant.name,
+                child: Text(
+                  restaurant.name,
+                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 24,
+                  ),
                 ),
               ),
               const SizedBox.square(dimension: 8),

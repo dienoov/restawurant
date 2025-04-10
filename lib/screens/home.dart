@@ -27,33 +27,35 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Header(),
-          Expanded(
-            child: Consumer<RestaurantsProvider>(
-              builder: (context, value, child) {
-                return switch (value.state) {
-                  LoadingState() => Loading(),
-                  ErrorState(error: String message) => ErrorMessage(
-                    message: message,
-                  ),
-                  LoadedState(data: List<Restaurant> restaurants) =>
-                    ListView.builder(
-                      itemCount: restaurants.length,
-                      itemBuilder: (context, index) {
-                        final restaurant = restaurants[index];
-                        return RestaurantCard(restaurant: restaurant);
-                      },
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Header(),
+            Expanded(
+              child: Consumer<RestaurantsProvider>(
+                builder: (context, value, child) {
+                  return switch (value.state) {
+                    LoadingState() => Loading(),
+                    ErrorState(error: String message) => ErrorMessage(
+                      message: message,
                     ),
-                  _ => const SizedBox(),
-                };
-              },
+                    LoadedState(data: List<Restaurant> restaurants) =>
+                      ListView.builder(
+                        itemCount: restaurants.length,
+                        itemBuilder: (context, index) {
+                          final restaurant = restaurants[index];
+                          return RestaurantCard(restaurant: restaurant);
+                        },
+                      ),
+                    _ => const SizedBox(),
+                  };
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
