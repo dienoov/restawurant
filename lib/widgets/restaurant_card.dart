@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restawurant/models/restaurant.dart';
+import 'package:restawurant/widgets/rating.dart';
 
 class RestaurantCard extends StatelessWidget {
   final Restaurant restaurant;
@@ -55,30 +56,7 @@ class RestaurantCard extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
-                  Row(
-                    children: List.generate(
-                      restaurant.rating.toInt(),
-                      (index) => Transform.translate(
-                        offset: Offset(
-                          (restaurant.rating.toInt() - index - 1) * 6,
-                          0,
-                        ),
-                        child: Icon(
-                          Icons.circle,
-                          color: Theme.of(context).colorScheme.primary,
-                          size: 14,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox.square(dimension: 6),
-                  Text(
-                    restaurant.rating.toString(),
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  const SizedBox.square(dimension: 4),
+                  Rating(rating: restaurant.rating),
                 ],
               ),
               const SizedBox.square(dimension: 6),
