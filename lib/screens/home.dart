@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:restawurant/models/restaurant.dart';
 import 'package:restawurant/providers/restaurants.dart';
 import 'package:restawurant/providers/state.dart';
+import 'package:restawurant/widgets/error_message.dart';
 import 'package:restawurant/widgets/header.dart';
 import 'package:restawurant/widgets/loading.dart';
 import 'package:restawurant/widgets/restaurant_card.dart';
@@ -36,30 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
               builder: (context, value, child) {
                 return switch (value.state) {
                   LoadingState() => Loading(),
-                  ErrorState(error: String message) => Center(
-                    child: Container(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.error,
-                            size: 80,
-                            color: Theme.of(context).colorScheme.error,
-                          ),
-                          const SizedBox.square(dimension: 16),
-                          Text(
-                            'Apologies, we are having trouble loading the data',
-                            style: Theme.of(context).textTheme.bodyLarge,
-                          ),
-                          const SizedBox.square(dimension: 8),
-                          Text(
-                            message,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                        ],
-                      ),
-                    ),
+                  ErrorState(error: String message) => ErrorMessage(
+                    message: message,
                   ),
                   LoadedState(data: List<Restaurant> restaurants) =>
                     ListView.builder(
