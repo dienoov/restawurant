@@ -21,7 +21,9 @@ class Header extends StatelessWidget {
             color: Theme.of(context).colorScheme.onSurface,
             icon: const Icon(Icons.search),
             iconSize: 24,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/search');
+            },
           ),
           SizedBox(width: 8),
           Container(

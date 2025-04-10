@@ -4,9 +4,11 @@ import 'package:restawurant/apis/restaurants.dart';
 import 'package:restawurant/providers/bookmarks.dart';
 import 'package:restawurant/providers/restaurant.dart';
 import 'package:restawurant/providers/restaurants.dart';
+import 'package:restawurant/providers/search.dart';
 import 'package:restawurant/screens/bookmarks.dart';
 import 'package:restawurant/screens/home.dart';
 import 'package:restawurant/screens/restaurant.dart';
+import 'package:restawurant/screens/search.dart';
 import 'package:restawurant/styles/theme.dart';
 
 void main() {
@@ -20,6 +22,9 @@ void main() {
           create: (context) => RestaurantProvider(RestaurantsApi()),
         ),
         ChangeNotifierProvider(create: (context) => BookmarksProvider()),
+        ChangeNotifierProvider(
+          create: (context) => SearchProvider(RestaurantsApi()),
+        ),
       ],
       child: const Restawurant(),
     ),
@@ -44,6 +49,7 @@ class Restawurant extends StatelessWidget {
               id: ModalRoute.of(context)?.settings.arguments as String,
             ),
         '/bookmarks': (context) => const BookmarksScreen(),
+        '/search': (context) => const SearchScreen(),
       },
     );
   }
