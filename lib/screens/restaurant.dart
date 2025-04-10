@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restawurant/models/restaurant.dart';
-import 'package:restawurant/providers/bookmarks.dart';
 import 'package:restawurant/providers/restaurant.dart';
 import 'package:restawurant/providers/state.dart';
+import 'package:restawurant/widgets/bookmark_button.dart';
 import 'package:restawurant/widgets/categories.dart';
 import 'package:restawurant/widgets/error_message.dart';
 import 'package:restawurant/widgets/loading.dart';
@@ -51,25 +51,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                     builder: (context, value, child) {
                       return switch (value.state) {
                         LoadedState(data: Restaurant restaurant) =>
-                          Consumer<BookmarksProvider>(
-                            builder: (context, value, child) {
-                              return IconButton(
-                                icon: Icon(
-                                  value.isBookmarked(restaurant)
-                                      ? Icons.bookmark_remove_outlined
-                                      : Icons.bookmark_add_outlined,
-                                ),
-                                iconSize: 24,
-                                onPressed: () {
-                                  if (value.isBookmarked(restaurant)) {
-                                    value.remove(restaurant);
-                                  } else {
-                                    value.add(restaurant);
-                                  }
-                                },
-                              );
-                            },
-                          ),
+                          BookmarkButton(restaurant: restaurant),
                         _ => const SizedBox(),
                       };
                     },
