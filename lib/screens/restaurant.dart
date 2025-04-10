@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restawurant/models/restaurant.dart';
+import 'package:restawurant/providers/bookmarks.dart';
 import 'package:restawurant/providers/restaurant.dart';
 import 'package:restawurant/providers/state.dart';
 import 'package:restawurant/widgets/categories.dart';
@@ -25,7 +26,6 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
 
     Future.microtask(() {
       Provider.of<RestaurantProvider>(context, listen: false).detail(widget.id);
-      // ).detail('rqdv5juczeskfw1e867');
     });
   }
 
@@ -47,10 +47,32 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                       Navigator.pop(context);
                     },
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.bookmark_add_outlined),
-                    iconSize: 24,
-                    onPressed: () {},
+                  Consumer<RestaurantProvider>(
+                    builder: (context, value, child) {
+                      return switch (value.state) {
+                        LoadedState(data: Restaurant restaurant) =>
+                          Consumer<BookmarksProvider>(
+                            builder: (context, value, child) {
+                              return IconButton(
+                                icon: Icon(
+                                  value.isBookmarked(restaurant)
+                                      ? Icons.bookmark_remove_outlined
+                                      : Icons.bookmark_add_outlined,
+                                ),
+                                iconSize: 24,
+                                onPressed: () {
+                                  if (value.isBookmarked(restaurant)) {
+                                    value.remove(restaurant);
+                                  } else {
+                                    value.add(restaurant);
+                                  }
+                                },
+                              );
+                            },
+                          ),
+                        _ => const SizedBox(),
+                      };
+                    },
                   ),
                 ],
               ),

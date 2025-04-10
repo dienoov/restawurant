@@ -33,7 +33,9 @@ class Header extends StatelessWidget {
               color: Theme.of(context).colorScheme.surface,
               icon: const Icon(Icons.bookmark_outline),
               iconSize: 24,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/bookmarks');
+              },
             ),
           ),
         ],
