@@ -26,7 +26,12 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
     super.initState();
 
     Future.microtask(() {
-      Provider.of<RestaurantProvider>(context, listen: false).detail(widget.id);
+      if (mounted) {
+        Provider.of<RestaurantProvider>(
+          context,
+          listen: false,
+        ).detail(widget.id);
+      }
     });
   }
 

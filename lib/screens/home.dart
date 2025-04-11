@@ -21,7 +21,9 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
 
     Future.microtask(() {
-      Provider.of<RestaurantsProvider>(context, listen: false).list();
+      if (mounted) {
+        Provider.of<RestaurantsProvider>(context, listen: false).list();
+      }
     });
   }
 
