@@ -2,9 +2,11 @@ import 'dart:convert';
 
 import 'package:restawurant/models/restaurant.dart';
 
-RestaurantDetail restaurantDetailFromJson(String str) => RestaurantDetail.fromJson(json.decode(str));
+RestaurantDetail restaurantDetailFromJson(String str) =>
+    RestaurantDetail.fromJson(json.decode(str));
 
-String restaurantDetailToJson(RestaurantDetail data) => json.encode(data.toJson());
+String restaurantDetailToJson(RestaurantDetail data) =>
+    json.encode(data.toJson());
 
 class RestaurantDetail {
   final bool error;
@@ -17,11 +19,12 @@ class RestaurantDetail {
     required this.restaurant,
   });
 
-  factory RestaurantDetail.fromJson(Map<String, dynamic> json) => RestaurantDetail(
-    error: json["error"],
-    message: json["message"],
-    restaurant: Restaurant.fromJson(json["restaurant"]),
-  );
+  factory RestaurantDetail.fromJson(Map<String, dynamic> json) =>
+      RestaurantDetail(
+        error: json["error"],
+        message: json["message"],
+        restaurant: Restaurant.fromJson(json["restaurant"]),
+      );
 
   Map<String, dynamic> toJson() => {
     "error": error,
