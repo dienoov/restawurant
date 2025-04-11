@@ -37,4 +37,18 @@ class RestaurantsApi {
       throw Exception('Failed to search restaurant');
     }
   }
+
+  Future<bool> review(String id, String name, String review) async {
+    final response = await http.post(
+      Uri.parse("$_baseUrl/review"),
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode({"id": id, "name": name, "review": review}),
+    );
+
+    if (response.statusCode == 201) {
+      return true;
+    } else {
+      throw Exception('Failed to submit review');
+    }
+  }
 }

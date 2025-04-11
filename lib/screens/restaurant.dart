@@ -9,6 +9,7 @@ import 'package:restawurant/widgets/error_message.dart';
 import 'package:restawurant/widgets/loading.dart';
 import 'package:restawurant/widgets/menu.dart';
 import 'package:restawurant/widgets/rating.dart';
+import 'package:restawurant/widgets/reviews.dart';
 
 class RestaurantScreen extends StatefulWidget {
   final String id;
@@ -147,6 +148,17 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                   menuType: MenuType.drinks,
                                 ),
                               ],
+                            ),
+                            const SizedBox.square(dimension: 24),
+                            Reviews(
+                              id: restaurant.id,
+                              customerReviews: restaurant.customerReviews!,
+                              onSubmit: () {
+                                Provider.of<RestaurantProvider>(
+                                  context,
+                                  listen: false,
+                                ).detail(restaurant.id);
+                              },
                             ),
                           ],
                         ),
