@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restawurant/apis/restaurants.dart';
+import 'package:restawurant/databases/bookmark.dart';
 import 'package:restawurant/providers/bookmarks.dart';
 import 'package:restawurant/providers/restaurant.dart';
 import 'package:restawurant/providers/restaurants.dart';
@@ -21,7 +22,9 @@ void main() {
         ChangeNotifierProvider(
           create: (context) => RestaurantProvider(RestaurantsApi()),
         ),
-        ChangeNotifierProvider(create: (context) => BookmarksProvider()),
+        ChangeNotifierProvider(
+          create: (context) => BookmarksProvider(BookmarkDatabase()),
+        ),
         ChangeNotifierProvider(
           create: (context) => SearchProvider(RestaurantsApi()),
         ),

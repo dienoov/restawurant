@@ -3,8 +3,23 @@ import 'package:provider/provider.dart';
 import 'package:restawurant/providers/bookmarks.dart';
 import 'package:restawurant/widgets/restaurant_card.dart';
 
-class BookmarksScreen extends StatelessWidget {
+class BookmarksScreen extends StatefulWidget {
   const BookmarksScreen({super.key});
+
+  @override
+  State<BookmarksScreen> createState() => _BookmarksScreenState();
+}
+
+class _BookmarksScreenState extends State<BookmarksScreen> {
+  @override
+  void initState() {
+    Future.microtask(() {
+      if (mounted) {
+        Provider.of<BookmarksProvider>(context, listen: false).list();
+      }
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
