@@ -45,7 +45,6 @@ class _SearchScreenState extends State<SearchScreen> {
                     },
                   ),
                   const SizedBox(width: 16),
-                  // search text field
                   Expanded(
                     child: TextField(
                       controller: _searchController,
