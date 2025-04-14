@@ -58,6 +58,19 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/search');
+          },
+          backgroundColor: Theme.of(context).colorScheme.onSurface,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(32),
+          ),
+          child: Icon(
+            Icons.search,
+            color: Theme.of(context).colorScheme.surface,
+          ),
+        ),
       ),
     );
   }

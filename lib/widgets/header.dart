@@ -19,26 +19,20 @@ class Header extends StatelessWidget {
           const Spacer(),
           IconButton(
             color: Theme.of(context).colorScheme.onSurface,
-            icon: const Icon(Icons.search),
+            icon: const Icon(Icons.bookmark_outline),
             iconSize: 24,
             onPressed: () {
-              Navigator.pushNamed(context, '/search');
+              Navigator.pushNamed(context, '/bookmarks');
             },
           ),
           SizedBox(width: 8),
-          Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.onSurface,
-              borderRadius: BorderRadius.circular(24),
-            ),
-            child: IconButton(
-              color: Theme.of(context).colorScheme.surface,
-              icon: const Icon(Icons.bookmark_outline),
-              iconSize: 24,
-              onPressed: () {
-                Navigator.pushNamed(context, '/bookmarks');
-              },
-            ),
+          IconButton(
+            color: Theme.of(context).colorScheme.onSurface,
+            icon: const Icon(Icons.settings),
+            iconSize: 24,
+            onPressed: () {
+              Navigator.pushNamed(context, '/settings');
+            },
           ),
         ],
       ),

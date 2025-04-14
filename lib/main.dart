@@ -6,10 +6,12 @@ import 'package:restawurant/providers/bookmarks.dart';
 import 'package:restawurant/providers/restaurant.dart';
 import 'package:restawurant/providers/restaurants.dart';
 import 'package:restawurant/providers/search.dart';
+import 'package:restawurant/providers/theme.dart';
 import 'package:restawurant/screens/bookmarks.dart';
 import 'package:restawurant/screens/home.dart';
 import 'package:restawurant/screens/restaurant.dart';
 import 'package:restawurant/screens/search.dart';
+import 'package:restawurant/screens/settings.dart';
 import 'package:restawurant/styles/theme.dart';
 
 void main() {
@@ -28,6 +30,7 @@ void main() {
         ChangeNotifierProvider(
           create: (context) => SearchProvider(RestaurantsApi()),
         ),
+        ChangeNotifierProvider(create: (context) => ThemeProvider()),
       ],
       child: const Restawurant(),
     ),
@@ -44,7 +47,7 @@ class Restawurant extends StatelessWidget {
       title: 'Restawurant',
       theme: RestawurantThemeData.lightTheme,
       darkTheme: RestawurantThemeData.darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: Provider.of<ThemeProvider>(context).themeMode,
       routes: {
         '/': (context) => const HomeScreen(),
         '/restaurant':
@@ -53,6 +56,7 @@ class Restawurant extends StatelessWidget {
             ),
         '/bookmarks': (context) => const BookmarksScreen(),
         '/search': (context) => const SearchScreen(),
+        '/settings': (context) => const SettingsScreen(),
       },
     );
   }
