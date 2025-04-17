@@ -38,6 +38,7 @@ class _SearchScreenState extends State<SearchScreen> {
               child: Row(
                 children: [
                   IconButton(
+                    key: ValueKey('backButton'),
                     icon: const Icon(Icons.chevron_left),
                     iconSize: 24,
                     onPressed: () {
@@ -47,6 +48,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   const SizedBox(width: 16),
                   Expanded(
                     child: TextField(
+                      key: ValueKey('searchField'),
                       controller: _searchController,
                       onSubmitted: (String value) {
                         if (value.isNotEmpty) {
@@ -104,6 +106,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     LoadedState(data: List<Restaurant> restaurants) =>
                       restaurants.isNotEmpty
                           ? ListView.builder(
+                            key: ValueKey('searchResults'),
                             itemCount: restaurants.length,
                             itemBuilder: (context, index) {
                               final restaurant = restaurants[index];

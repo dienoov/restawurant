@@ -141,6 +141,7 @@ class _ReviewsState extends State<Reviews> {
         }),
         const SizedBox.square(dimension: 24),
         TextField(
+          key: ValueKey('nameField'),
           controller: _nameController,
           decoration: InputDecoration(
             hintText: 'Enter your name',
@@ -171,6 +172,7 @@ class _ReviewsState extends State<Reviews> {
         ),
         const SizedBox.square(dimension: 8),
         TextField(
+          key: ValueKey('reviewField'),
           controller: _reviewController,
           minLines: 5,
           maxLines: null,
@@ -204,6 +206,7 @@ class _ReviewsState extends State<Reviews> {
         ),
         const SizedBox.square(dimension: 8),
         ElevatedButton(
+          key: ValueKey('submitButton'),
           style: ElevatedButton.styleFrom(
             backgroundColor: Theme.of(context).colorScheme.primary,
             shape: RoundedRectangleBorder(

@@ -47,6 +47,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
+                    key: ValueKey('backButton'),
                     icon: const Icon(Icons.chevron_left),
                     iconSize: 24,
                     onPressed: () {

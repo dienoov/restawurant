@@ -48,6 +48,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               child: Row(
                 children: [
                   IconButton(
+                    key: ValueKey('backButton'),
                     icon: const Icon(Icons.chevron_left),
                     iconSize: 24,
                     onPressed: () {

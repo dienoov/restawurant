@@ -68,6 +68,7 @@ class _BookmarkButtonState extends State<BookmarkButton> {
     return Consumer<BookmarksProvider>(
       builder: (context, value, child) {
         return IconButton(
+          key: ValueKey('bookmarkButton'),
           icon: Icon(
             Provider.of<BookmarksProvider>(
                   context,

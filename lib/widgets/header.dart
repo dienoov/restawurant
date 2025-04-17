@@ -18,6 +18,7 @@ class Header extends StatelessWidget {
           ),
           const Spacer(),
           IconButton(
+            key: ValueKey('bookmarkButton'),
             color: Theme.of(context).colorScheme.onSurface,
             icon: const Icon(Icons.bookmark_outline),
             iconSize: 24,
@@ -27,6 +28,7 @@ class Header extends StatelessWidget {
           ),
           SizedBox(width: 8),
           IconButton(
+            key: ValueKey('settingsButton'),
             color: Theme.of(context).colorScheme.onSurface,
             icon: const Icon(Icons.settings),
             iconSize: 24,

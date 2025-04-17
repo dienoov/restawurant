@@ -33,6 +33,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
               child: Row(
                 children: [
                   IconButton(
+                    key: ValueKey('backButton'),
                     icon: const Icon(Icons.chevron_left),
                     iconSize: 24,
                     onPressed: () {
@@ -72,6 +73,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
                       ),
                     ),
                     false => ListView.builder(
+                      key: ValueKey('bookmarkList'),
                       itemCount: value.bookmarks.length,
                       itemBuilder: (context, index) {
                         final restaurant = value.bookmarks[index];
