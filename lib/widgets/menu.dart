@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../models/restaurant.dart';
+import 'package:restawurant/models/restaurant.dart';
 
 enum MenuType { foods, drinks }
 
