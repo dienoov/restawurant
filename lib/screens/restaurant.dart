@@ -125,10 +125,11 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                       SizedBox.square(dimension: 2),
                                       Text(
                                         restaurant.address ?? '',
-                                        style:
-                                            Theme.of(
-                                              context,
-                                            ).textTheme.bodySmall,
+                                        style: Theme.of(
+                                          context,
+                                        ).textTheme.labelSmall?.copyWith(
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
                                     ],
                                   ),
