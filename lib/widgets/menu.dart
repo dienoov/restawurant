@@ -4,11 +4,11 @@ import '../models/restaurant.dart';
 
 enum MenuType { foods, drinks }
 
-class Menu extends StatelessWidget {
+class MenuCard extends StatelessWidget {
   final List<Category> menu;
   final MenuType menuType;
 
-  const Menu({super.key, required this.menu, required this.menuType});
+  const MenuCard({super.key, required this.menu, required this.menuType});
 
   @override
   Widget build(BuildContext context) {

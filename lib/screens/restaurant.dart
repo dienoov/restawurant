@@ -144,12 +144,12 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Menu(
+                                MenuCard(
                                   menu: restaurant.menus!.foods,
                                   menuType: MenuType.foods,
                                 ),
                                 const SizedBox.square(dimension: 16),
-                                Menu(
+                                MenuCard(
                                   menu: restaurant.menus!.drinks,
                                   menuType: MenuType.drinks,
                                 ),
